@@ -1,0 +1,8 @@
+<h1>Riddles of the Sphinx</h1>
+<h4><%= @guess %> is not correct! Try again!</h4>
+<h4>The Riddle: <%= @riddle.get_riddle %></h4>
+<form action="/" method="post">
+  <label for="answer">Your Answer: </label>
+  <input type="text" name="answer">
+  <button type="submit" name="button">Submit!</button>
+</form>

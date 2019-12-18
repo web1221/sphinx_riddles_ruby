@@ -31,17 +31,25 @@ end
 
 post('/') do
   @riddle = riddle
-  guess = params[:answer]
-  riddle.make_guess(guess)
-  if riddle.current_riddle == riddle.riddles.length
-    if riddle.wrong.length > 0
-      @wrong = riddle.wrong
-      riddle = RiddleTest.new()
-      return erb(:fail)
-    else
-      riddle = RiddleTest.new()
-      return erb(:win)
+  @guess = params[:answer]
+  correct = riddle.correct_guess?(@guess)
+  if correct || riddle.guesses == false
+    riddle.guesses = true
+    riddle.next_riddle
+    if riddle.current_riddle == riddle.riddles.length
+      if riddle.wrong.length > 0
+        @wrong = riddle.wrong
+        riddle = RiddleTest.new()
+        return erb(:fail)
+      else
+        riddle = RiddleTest.new()
+        return erb(:win)
+      end
     end
+    return erb(:sphinx)
+  else
+    riddle.guesses = false
+    return erb(:retry)
   end
-  erb(:sphinx)
+
 end

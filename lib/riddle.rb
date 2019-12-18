@@ -1,11 +1,13 @@
 class RiddleTest
 
   attr_reader(:riddles, :current_riddle, :wrong)
+  attr_accessor(:guesses)
 
   def initialize()
     @riddles = make_riddles()
     @current_riddle = 0
     @wrong = []
+    @guesses = true
   end
 
   def make_riddles
@@ -28,18 +30,19 @@ class RiddleTest
     @riddles[@current_riddle][0]
   end
 
-  def make_guess(guess)
+  def correct_guess?(guess)
     if !@riddles[@current_riddle][1].include?(guess.downcase.chomp)
-      @wrong.push(@riddles[@current_riddle])
+      if !@guesses then @wrong.push(@riddles[@current_riddle]) end
+      return false
     end
-    next_riddle
+    true
   end
 
   def new_riddle(riddle, answers)
     @riddles.push([riddle, answers])
     answer_string = answers.join('&')
-    File.open('./q.txt') do |file| file.write(riddle) end
-    File.open('./a.txt') do |file| file.write(answer_string) end
+    File.open('./q.txt', 'a') do |file| file.puts riddle end
+    File.open('./a.txt', 'a') do |file| file.puts answer_string end
   end
 
 end
