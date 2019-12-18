@@ -1,0 +1,10 @@
+Riddles of the Sphinx
+In Greek myth, the Sphinx guarded the gates of the city Thebes. Travelers could only pass the Sphinx if they correctly answered a riddle. Build an application where a user has to answer a series of the Sphinx's riddles in order to get into the city. Woe to the user that answers incorrectly! Your application should have a "success" page (for users that correctly answer all riddles) and a "failure" page if one of the riddles is answered incorrectly. You can find examples of the Sphinx’s riddles online or you can use your own. The focus of this project is to practice routing. Do not attempt the further explorations until you have a basic application with hard-coded riddles and complete routing first.
+
+Further Exploration
+Turn this into a CRUD application: users can create, update and delete their own riddles.
+Once you have a set of riddles a user can answer, add a random option so users see different riddles each time they play. Hint: Implement a Riddle.random() class method. This method does not need to be tested.
+Make the Sphinx more forgiving. Allow a user to have one or more chances to get a riddle wrong. If the riddle is answered incorrectly, then the Sphinx can give a clue.
+Update your application so the Sphinx is instead guarding treasure and/or knowledge, such as endless gold or the secret of eternal life. Allow users to solve riddles to get different final outcomes (beyond just entering the city gates).
+
+    [["What is greater than God, more evil than the devil, the poor have it, the rich need it, and if you eat it, you'll die?",['nothing']],['What has an eye but can not see?',['a needle','needle']],['What has a head and a tail, but no body?',['a coin','coin']]]

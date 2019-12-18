@@ -1,0 +1,11 @@
+<h1>You lose, leave now!</h1>
+<h4>Questions you got wrong:</h4>
+<ul>
+  <% @wrong.each do |q| %>
+    <li><%= q[0] %>: <%= q[1][0] %></li>
+  <% end %>
+</ul>
+
+<form action="/reset" method="post">
+  <button type="submit">Try again!</button>
+</form>
